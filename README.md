@@ -1,0 +1,2 @@
+# project1
+Our project seeks to reduce food waste in Chicago by connecting restaurants/cafes that produce food waste with urban farms, community gardens, and individuals looking for compostable material. Businesses with compostable material available can use our site to post what they have to offer. Individuals can view locations near them, and access contact information for businesses to schedule pick up.
