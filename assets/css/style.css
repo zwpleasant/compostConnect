@@ -1,1 +1,9 @@
-/* style.css file */
+.navbar-right {
+    font-size: 20px;
+}
+
+#odometer-line {
+    text-align: center;
+    margin-top: 10px;
+}
+

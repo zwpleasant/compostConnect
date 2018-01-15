@@ -1,25 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Composting</title>
+    <title>Compost Connect</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.min.css" rel="stylesheet" type="text/css">
+
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/odometerStyle.css">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
-     <!-- jQuery -->
-     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-     <!-- Firebase Reference -->
-     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <a class="navbar-brand" href="#">
+            <h1>Compost Connect</h1>
+        </a>
+        <a href="#"></a>
     
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" aria-hidden="true"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse justify-content-end" id="navbarColor01">
+            <ul class="nav navbar-nav navbar-right">
+    
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Add a Site</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="map.html">Find a Site</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Learn</a>
+                </li>
+            </ul>
+        </div>
 
+    </nav>
+
+    <!-- Odometer line -->
+    <div id="odometer-line">
+        <h3>Chicagoans have thrown out
+        <span class="lead odometer" id="odometer" style="font-size: 30px">
+                0
+        </span>
+        pounds of food since you loaded this page!</h3>
+    </div>
 
     <script src="assets/javascript/index.js"></script>
+    <script src="assets/javascript/odometerLogic.js"></script>
 </body>
 </html>
