@@ -19,6 +19,7 @@
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 
 </head>
+
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
@@ -36,7 +37,7 @@
             <ul class="nav navbar-nav navbar-right">
     
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Add a Site</a>
+                    <a class="nav-link" href="form.html">Add a Site</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="map.html">Find a Site</a>
@@ -50,31 +51,66 @@
     </nav>
 
     <!-- Odometer line -->
-    <div id="odometer-line">
-        <h3>Chicagoans have thrown out
-        <span class="lead odometer" id="odometer" style="font-size: 30px">
-                0
-        </span>
-        pounds of food since you loaded this page!</h3>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="odometer-line">
+                <h3>Chicagoans have thrown out
+                <span class="lead odometer" id="odometer" style="font-size: 30px">
+                        0
+                </span>
+                pounds of food since you loaded this page!</h3>
+            </div>
+        </div>
     </div>
 
     <!-- Jumbotron -->
-    <div class="jumbotron">
-        <h1 class="display-3 text-success">Will you be part of the solution?</h1>
-        <p class="lead">Composting is an easy way to divert food waste from landfills. Together, we can make a dent in the 660,000,000 pounds of food that Chicagoans throw out every year.</p>
-        <hr class="my-4">
-        <p>Compost Connect links urban farms, community gardens, and other sites that have composting programs with local businesses and individuals who are seeking to reduce their food waste. If your organization currently composts, and is willing and able to accept additional materials from local businesses and individuals who are passionate about reducing food waste, please add your site to our map. If you are a restaurant, cafe, or individual looking to start composting, browse our map to find a site near you. Or learn more about starting your own compost system!</p>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h1 class="display-3 text-success">Will you be part of the solution?</h1>
+                <p class="lead" style="font-size: 21px">Composting is an easy way to divert food waste from landfills. Together, we can make a dent in the 660,000,000 pounds of food that Chicagoans throw out every year.</p>
+                <hr class="my-4">
+                <p style="font-size: 18px">Compost Connect links urban farms, community gardens, and other sites that have composting programs with local businesses and individuals who are seeking to reduce their food waste. Help build greener communities by adding your composting program to our map, or finding one near you.</p>
+            </div>
+        </div>
     </div>
 
+    <!-- Cards -->
+    <div class="row">
 
-    <footer class="footer navbar navbar-dark bg-success">
-            <div class="container">
-              <span>&copy Copyright 2017 Compost Connect</span>
-              <a id="soil-attr" target="_blank" href='https://www.freepik.com/free-photo/gardening-soil_1270134.htm'>Soil background designed by Freepik</a>
+        <div class="col-md-6">
+            <div class="card" id="card1">
+                <div class="card-body">
+                    <h2 class="card-title text-success">I already compost!</h2>
+                    <p class="card-text">Thanks for helping to reduce food waste! If you can accept more material, add your site to the map to increase your impact.</p>
+                    <a href="form.html" class="card-link">Add your site</a>
+                </div>
             </div>
-          </footer>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card" id="card2">
+                <div class="card-body">
+                    <h2 class="card-title text-success">I want to start!</h2>
+                    <p class="card-text">Great! Explore our map to find a site near you, or learn how to start composting by yourself.</p>
+                    <a href="map.html" class="card-link">Find a site</a>
+                    <a href="#" class="card-link">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer navbar navbar-dark bg-success">
+        <div class="container">
+            <span>&copy Copyright 2017 Compost Connect</span>
+            <a id="soil-attr" target="_blank" href='https://www.freepik.com/free-photo/gardening-soil_1270134.htm'>Soil background designed by Freepik</a>
+        </div>
+    </footer>
+  
     
     <script src="assets/javascript/index.js"></script>
     <script src="assets/javascript/odometerLogic.js"></script>
+
 </body>
 </html>
