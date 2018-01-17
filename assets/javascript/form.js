@@ -108,18 +108,18 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
 
 // Script for invalid fields
-(function() {
-  'use strict';
+// (function() {
+//   'use strict';
 
-  window.addEventListener('load', function() {
-    var form = document.getElementById('needs-validation');
-    form.addEventListener('submit', function(event) {
-      if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-      form.classList.add('was-validated');
-    }, false);
-  }, false);
-})();
+//   window.addEventListener('load', function() {
+//     var form = document.getElementById('needs-validation');
+//     form.addEventListener('submit', function(event) {
+//       if (form.checkValidity() === false) {
+//         event.preventDefault();
+//         event.stopPropagation();
+//       }
+//       form.classList.add('was-validated');
+//     }, false);
+//   }, false);
+// })();
 
