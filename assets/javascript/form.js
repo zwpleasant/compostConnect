@@ -106,8 +106,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 //Submit button should either: A> Validate/display any errors B> Thanks for your submission--check map!
 
 
-
-// Script for invalid fields
+//Script for invalid fields
 // (function() {
 //   'use strict';
 
@@ -122,4 +121,3 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 //     }, false);
 //   }, false);
 // })();
-
