@@ -21,10 +21,10 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.html">
             <h3>Compost Connect</h3>
         </a>
-        <a href="#"></a>
+
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -48,43 +48,44 @@
         </div>
     </nav>
 
-    <div class="container-fluid">
-        <div class="form-row">
-            <h4>By filling out and submitting this form, you are agreeing to add your address and contact information to our
-                map.
-            </h4>
-        </div>
-        <form id="content needs-validation" novalidate>
-            <div class="row">
-                <div class="form-group">
-                    <label for="facility-type" class="col-md-12 control-label">Facility Type</label>
-                    <div class="col-md-12 ">
-                        <select class="form-control" id="facility-input" name="Facility Type">
+
+    <div class="container-fluid ">
+        <div class="jumbotron vertical-center">
+            <div class="form-row text-center">
+                <div class="col-md-12 mb-3">
+                    <h4 style="color:green">By filling out and submitting this form, you are agreeing to add your address and contact information
+                        to our map.
+                    </h4>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                        <div class="form-group">
+                            <label for="facility-type" class="col-md-12 control-label">Facility Type</label>
+                            <select class="form-control" id="facility-input" name="Facility Type">
                             <option>Select One</option>
-                            <option>Urban Farm</option>
-                            <option>Co-Op</option>
-                            <option>School</option>
-                            <option>Community Garden</option>
-                            <option>Recycling Center</option>
-                            <option>Other</option>
-                        </select>
-                    </div>
+                                <option>Urban Farm</option>
+                                <option>Co-Op</option>
+                                <option>School</option>
+                                <option>Community Garden</option>
+                                <option>Recycling Center</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="validationCustom01">Location Name</label>
-                    <input type="text" class="form-control" id="name-input" placeholder="Location Name" required>
-                    <div class="invalid-feedback">
-                            Please provide the name of your Location.
-                          </div>
-                          
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label for="locationName">Location Name</label>
+                    <input type="text" class="form-control" id="name-input" placeholder="Location Name" >
+               
+
                 </div>
             </div>
 
-            <div class="row ">
-                <div class="col-md-6 mb-3">
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
                     <div id="locationField">
                         <label for="inputAddress">Enter Address</label>
                         <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text" class="form-control"></input>
@@ -174,21 +175,22 @@
                 </div>
             </div> -->
 
-            <div class="row">
-                <div class="col-md-6 mb-3">
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
                     <label for="inputPhone">Phone</label>
                     <input type="tel" class="form-control" id="phone-input" placeholder="555-555-1234">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="inputEmail">Email</label>
-                    <input type="text" class="form-control" id="email-input" placeholder="compost@green.com">
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="email-input" aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
 
             </div>
-            <div class="row">
-                <div class="col-md-6 mb-3">
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
                     <label for="exampleTextarea">Additional Information</label>
                     <textarea class="form-control" id="extra-input" rows="3" placeholder="Add anything additional that you'd like people to know here."></textarea>
                 </div>
@@ -198,8 +200,17 @@
             <button type="submit" class="btn btn-success btn-add-location">SUBMIT</button>
         </form>
 
+        </div>
 
     </div>
+
+    <!-- Footer -->
+    <footer class="footer navbar navbar-dark bg-success">
+        <div class="container">
+            <span>&copy Copyright 2018 Compost Connect</span>
+            <a id="soil-attr" target="_blank" href='https://www.freepik.com/free-photo/gardening-soil_1270134.htm'>Soil background designed by Freepik</a>
+        </div>
+    </footer>
     <script src="assets/javascript/form.js"></script>
     <script src="assets/javascript/index.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApr2VBAxJkxukssM8EDGrKN4qwe4gZdKE&libraries=places&callback=initAutocomplete"
