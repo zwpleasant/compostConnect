@@ -11,9 +11,26 @@ function initMap() {
 
   // set specific map styling for geoJSON data
   map.data.setStyle({
-        icon: 'assets/images/colorIcon_26.png'
+        icon: 'assets/images/colorIcon_26.png',
+        clickable: true
   })
 
+  // adds legend to the map document
   map.controls[google.maps.ControlPosition.RIGHT_TOP].push (document.getElementById('legend'));
+
+  // create infowindow object to use later
+  var infowindow = new google.maps.InfoWindow();
+
+  // create a listener that will wait for the user to click a facility, then display the infowindow with details about that facility
+  map.data.addListener('click', function(event) {
+    // in the geojson feature that was clicked, get the "place" and "mag" attributes
+    let companyName = event.feature.getProperty("company_name_");
+    let phoneNum = event.feature.getProperty("phone_1");
+    let html = "Company: " + companyName + ", Phone: " + phoneNum;
+    infowindow.setContent(html); // show the html variable in the infowindow
+    infowindow.setPosition(event.feature.getGeometry().get()); // anchor the infowindow at the marker
+    infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)}); // move the infowindow up slightly to the top of the marker icon
+    infowindow.open(map);
+  });
 
 }
