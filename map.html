@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Composting</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="assets/css/style.css">
 
      <!-- jQuery -->
@@ -17,9 +17,53 @@
 
 </head>
 <body>
-    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <a class="navbar-brand" href="#">
+            <h3>Compost Connect</h3>
+        </a>
+        <a href="#"></a>
 
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
+        </button>
 
+        <div class="collapse navbar-collapse justify-content-end" id="navbarColor01">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="form.html">Add a Site</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="map.html">Find a Site</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Learn</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+
+    <div id="map"></div>
+    <div id="legend">
+      <span>Compost Facility</span>
+      <img id="icon" src="assets/images/colorIcon_26.png" alt="Icon">
+    </div>
+
+    <!-- Footer -->
+     <footer class="footer navbar navbar-dark bg-success">
+        <div class="container">
+            <span>&copy Copyright 2018 Compost Connect</span>
+            <a id="soil-attr" target="_blank" href='https://www.freepik.com/free-photo/gardening-soil_1270134.htm'>Soil background designed by Freepik</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript link to the Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV-xnNA8cnDzU_Ehij8y4_XOvfzo0H2Po&callback=initMap"
+    async defer></script>
+
+    <!-- link to the custom JavaScript file -->
     <script src="assets/javascript/map.js"></script>
 </body>
 </html>
