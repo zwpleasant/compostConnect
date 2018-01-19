@@ -1,4 +1,6 @@
 
+
+
 #map {
   height: 550px;
   width: 700px;
@@ -28,6 +30,7 @@ body {
     margin-top: 20px;
     font-size: 20px;
     color: white;
+    background: rgba(19, 18, 18, 0.75);
 }
 
 .jumbotron {
