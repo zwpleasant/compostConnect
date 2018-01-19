@@ -16,7 +16,7 @@ function initMap() {
   })
 
   // adds legend to the map document
-  map.controls[google.maps.ControlPosition.RIGHT_TOP].push (document.getElementById('legend'));
+  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push (document.getElementById('legend'));
 
   // create infowindow object to use later
   var infowindow = new google.maps.InfoWindow();

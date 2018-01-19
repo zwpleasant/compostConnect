@@ -2,17 +2,9 @@
   font-size: 20px;
 }
 #map {
-  height: 100%;
-  width: 100%;
-  padding: 20px;
-}
-html {
-  height: 100%;
-  padding: 0;
-}
-body {
-  height: 100%;
-  padding: 0;
+  height: 550px;
+  width: 700px;
+  margin: auto;
 }
 #legend {
   background: #fff;
@@ -20,4 +12,22 @@ body {
   margin: 5px;
   border: 3px solid #000;
   text-align: center;
+}
+
+/* From sticky footer bootstrap */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 60px; /* Margin bottom by footer height */
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px; /* Set the fixed height of the footer here */
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #28a745;
 }
