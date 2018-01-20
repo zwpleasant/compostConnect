@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Compost Connect</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <a class="navbar-brand" href="index.html">
+            <h1>Compost Connect</h1>
+        </a>
+    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" aria-hidden="true"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse justify-content-end" id="navbarColor01">
+            <ul class="nav navbar-nav navbar-right">
+    
+                <li class="nav-item">
+                    <a class="nav-link" href="form.html">Add a Site</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="map.html">Find a Site</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Learn</a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+
+    <!-- Jumbotron -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h1 class="display-3 text-success">Why compost?</h1>
+                <p class="lead" style="font-size: 21px">Reducing food waste, preserving nutrients, saving money-- composting just makes sense.</p>
+                <hr class="my-4">
+                <p style="font-size: 18px">
+                    <ul>
+                        <li>Composting food scraps means they are recycled back into nutrient-rich soil to help grow more food, instead of sitting in a landfill</li>
+                        <li>Composting can help businesses save money by reducing costs of trash disposal, and can be a valuable marketing tool</li>
+                        <li>Urban farms, co-ops, and community gardens that accept additional materials will increase their impact, make community connections, and gain organic resources</li>
+
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="card" id="card1">
+                <div class="card-body">
+                    <h2 class="card-title text-success">Compostable Materials</h2>
+                    <p class="card-text">
+                        <ul>
+                            <li>Scraps from fruits and vegetables</li>
+                            <li>Bread and cereal</li>
+                            <li>Coffee grounds and tea bags</li>
+                            <li>Crushed egg shells</li>
+                            <li>And a lot more!</li>
+                        </ul>
+                    </p>
+                    <a href="https://www.greenthumbcompost.com/compostableitems" target="_blank" class="btn btn-success">Learn more</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card" id="card2">
+                <div class="card-body">
+                    <h2 class="card-title text-success">Non-compostable Materials</h2>
+                    <p class="card-text">
+                        <ul>
+                            <li>Meat and fish</li>
+                            <li>Dairy products</li>
+                            <li>High fat foods, such as peanut butter and oils</li>
+                            <li>Anything toxic such as household cleaners</li>
+                            <li>Others-- when in doubt, look it up!</li>
+                        </ul>
+                    </p>
+                    <a href="https://www.greenthumbcompost.com/compostableitems" target="_blank" class="btn btn-success">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jumbotron -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h1 class="display-3 text-success">Start your own!</h1>
+                <p class="lead" style="font-size: 21px">If you can't find a site near you, or just want to take the lead on reducing food waste, learn more about starting your own composting system!</p>
+                <hr class="my-4">
+                <p style="font-size: 18px">
+                    <ul>
+                        <li><a target="_blank" href="http://www.mass.gov/eea/agencies/massdep/recycle/reduce/composting-yard-and-food-waste.html">Set up an outdoor compost pile</a></li>
+                        <li><a target="_blank" href="http://www.mass.gov/eea/agencies/massdep/recycle/reduce/vermicomposting-indoor-composting-with-worms.html">Set up your own indoor vermicompost bin (composting with worms)</a></li>
+                        <li><a target="_blank" href="http://illinoiscomposts.org/we-compost/restaurant-toolkit">Restaurant Composting Toolkit</a></li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer navbar navbar-dark bg-success">
+        <div class="container">
+            <span>&copy Copyright 2018 Compost Connect</span>
+            <a id="soil-attr" target="_blank" href='https://www.freepik.com/free-photo/gardening-soil_1270134.htm'>Soil background designed by Freepik</a>
+        </div>
+    </footer>
+  
+</body>
+</html>
