@@ -1,5 +1,62 @@
+var API_KEY = `AIzaSyBV-xnNA8cnDzU_Ehij8y4_XOvfzo0H2Po`;
+
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyBfHV5fWxxT0Qof1L3zFOGeLq2yiMMuaRo",
+  authDomain: "compost-1ecb5.firebaseapp.com",
+  databaseURL: "https://compost-1ecb5.firebaseio.com",
+  projectId: "compost-1ecb5",
+  storageBucket: "compost-1ecb5.appspot.com",
+  messagingSenderId: "62910822789"
+};
+firebase.initializeApp(config);
+
+var database = firebase.database();
+
+// convert the Firebase data into an array
+function snapshotToArray(snapshot) {
+    var returnArr = [];
+    snapshot.forEach(function(childSnapshot) {
+        var item = childSnapshot.val();
+        item.key = childSnapshot.key;
+        returnArr.push(item);
+    });
+    return returnArr;
+};
+
+// on value, log the array
+firebase.database().ref().on('value', function(snapshot) {
+    var locationArray = snapshotToArray(snapshot);
+    // console.log(locationArray);
+    for (i = 0; i < locationArray.length; i++) {
+      //console.log(locationArray[i].address);
+      codeAddress(locationArray[i]);
+    }
+});
+
+// geocoding?
+function codeAddress(location) {
+  var newAddress = location.address.replace(/ /g, '+');;
+  $.ajax({
+    url:`https://maps.googleapis.com/maps/api/geocode/json?address=${newAddress}&key=${API_KEY}`
+  }).done(function (result) {
+    if (status == 'OK') {
+      var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
+
+
+// initialize and create map
 var map;
 function initMap() {
+
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 10,
     center: {lat: 41.8781, lng: -87.6298},
@@ -32,5 +89,6 @@ function initMap() {
     infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)}); // move the infowindow up slightly to the top of the marker icon
     infowindow.open(map);
   });
+
 
 }
