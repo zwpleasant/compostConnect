@@ -24,31 +24,25 @@ function snapshotToArray(snapshot) {
     return returnArr;
 };
 
-// on value, log the array
-firebase.database().ref().on('value', function(snapshot) {
-    var locationArray = snapshotToArray(snapshot);
-    // console.log(locationArray);
-    for (i = 0; i < locationArray.length; i++) {
-      //console.log(locationArray[i].address);
-      codeAddress(locationArray[i]);
-    }
-});
+
 
 // geocoding?
 function codeAddress(location) {
-  var newAddress = location.address.replace(/ /g, '+');;
-  $.ajax({
-    url:`https://maps.googleapis.com/maps/api/geocode/json?address=${newAddress}&key=${API_KEY}`
-  }).done(function (result) {
-    if (status == 'OK') {
-      var marker = new google.maps.Marker({
-        map: map,
-        position: results[0].geometry.location
-      });
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
+  if (location.address) {
+    var newAddress = location.address.replace(/ /g, '+');
+    $.ajax({
+      url:`https://maps.googleapis.com/maps/api/geocode/json?address=${newAddress}&key=${API_KEY}`
+    }).done(function (response) {
+      if (response.status == 'OK') {
+        var marker = new google.maps.Marker({
+          map: map,
+          position: response.results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + result.status);
+      }
+    });
+  }
 }
 
 
@@ -90,5 +84,14 @@ function initMap() {
     infowindow.open(map);
   });
 
+  // on value, log the array
+firebase.database().ref().on('value', function(snapshot) {
+  var locationArray = snapshotToArray(snapshot);
+  // console.log(locationArray);
+  for (i = 0; i < locationArray.length; i++) {
+    //console.log(locationArray[i].address);
+    codeAddress(locationArray[i]);
+  }
+});
 
 }
