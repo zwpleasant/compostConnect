@@ -1,10 +1,8 @@
-
-
-
 #map {
   height: 550px;
   width: 700px;
   margin: auto;
+  margin-top: 5%;
 }
 #legend {
   background: #fff;
@@ -13,7 +11,6 @@
   border: 3px solid #000;
   text-align: center;
 }
-
 
 body {
     background-image: url(../images/soil.jpg);
@@ -64,9 +61,6 @@ body {
 }
 
 
-
-
-
 /* From sticky footer bootstrap */
 
 html {
@@ -85,7 +79,6 @@ html {
     background-color: #28a745;
   }
 
-
   /* Form Style */
   .form-background{
       background: white;
@@ -96,3 +89,4 @@ html {
     padding-right: 15px;
     padding-left: 15px;
     padding-bottom: 15px;
+}

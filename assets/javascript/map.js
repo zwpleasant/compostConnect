@@ -13,6 +13,7 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+
 // convert the Firebase data into an array
 function snapshotToArray(snapshot) {
   var returnArr = [];
@@ -25,19 +26,33 @@ function snapshotToArray(snapshot) {
 };
 
 
-
 // geocode address data stored in Firebase
 function codeAddress(location) {
   if (location.address) {
+    var compName = location.name;
+    var compPhone = location.phone;
+    var compAddress = location.address;
     var newAddress = location.address.replace(/ /g, '+');
     $.ajax({
       url: `https://maps.googleapis.com/maps/api/geocode/json?address=${newAddress}&key=${API_KEY}`
     }).done(function (response) {
       if (response.status == 'OK') {
+
+        var contentString = "<p>Company: " + compName + "</p>" +
+          "<p>Phone: " + compPhone + "</p>" +
+          "<p>Address: " + compAddress + "</p>";
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
         var marker = new google.maps.Marker({
           map: map,
           position: response.results[0].geometry.location,
           icon: 'assets/images/colorIcon_26.png',
+        });
+        marker.addListener("click", function() {
+          infowindow.open(map, marker);
         });
       } else {
         alert('Geocode was not successful for the following reason: ' + result.status);
@@ -45,7 +60,6 @@ function codeAddress(location) {
     });
   }
 }
-
 
 
 // initialize and create map
@@ -90,7 +104,7 @@ function initMap() {
   // on value, log the array
   firebase.database().ref().on('value', function (snapshot) {
     var locationArray = snapshotToArray(snapshot);
-    // console.log(locationArray);
+    console.log(locationArray);
     for (i = 0; i < locationArray.length; i++) {
       //console.log(locationArray[i].address);
       codeAddress(locationArray[i]);
