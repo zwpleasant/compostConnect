@@ -1,4 +1,116 @@
-var API_KEY = `AIzaSyBV-xnNA8cnDzU_Ehij8y4_XOvfzo0H2Po`;
+// Invalid fields
+(function () {
+  'use strict';
+  window.addEventListener('load', function () {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function (form) {
+      form.addEventListener('submit', function (event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        else {
+          event.preventDefault();
+
+          //Grabs user input
+          var name = $("#name-input").val().trim();
+          var type = $("#facility-input").val().trim();
+          var address = $("#autocomplete").val().trim();
+          var phone = $("#phone-input").val().trim();
+          var email = $("#email-input").val().trim();
+          var extra = $("#extra-input").val().trim();
+
+
+          // Creates local "temporary" object for holding facility data
+          var newFacility = {
+            name: name,
+            type: type,
+            address: address,
+            phone: phone,
+            email: email,
+            extra: extra,
+
+          };
+
+          database.ref().push(newFacility);
+
+          // // Clears all of the text-boxes
+          // $("#name-input").val("");
+          // $("#facility-input").val("");
+          // $("#autocomplete").val("");
+          // $("#phone-input").val("");
+          // $("#email-input").val("");
+          // $("#extra-input").val("");
+
+
+          //Modal pops up if successful
+          $("#myModal").modal();
+
+        };
+        database.ref().on("child_added", function (childSnapshot, prevChildKey) {
+
+          console.log(childSnapshot.val());
+
+          // Store everything into a variable.
+          var name = childSnapshot.val().name;
+          var type = childSnapshot.val().type;
+          var address = childSnapshot.val().address;
+          var phone = childSnapshot.val().phone;
+          var email = childSnapshot.val().email;
+          var extra = childSnapshot.val().extra;
+
+        });
+
+
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+
+// Auto Complete Address by Google
+var placeSearch, autocomplete;
+var componentForm = {
+  street_number: "short_name",
+  route: "long_name",
+  locality: "long_name",
+  administrative_area_level_1: "short_name",
+  country: "long_name",
+  postal_code: "short_name"
+};
+
+
+
+function initAutocomplete() {
+  // Create the autocomplete object, restricting the search to geographical
+  // location types.
+  autocomplete = new google.maps.places.Autocomplete(
+    /** @type {!HTMLInputElement} */(document.getElementById("autocomplete")),
+    { types: ["address"] }
+  );
+
+}
+
+// // Bias the autocomplete object to the user's geographical location,
+// // as supplied by the browser's 'navigator.geolocation' object.
+// function geolocate() {
+//   if (navigator.geolocation) {
+//     navigator.geolocation.getCurrentPosition(function (position) {
+//       var geolocation = {
+//         lat: position.coords.latitude,
+//         lng: position.coords.longitude
+//       };
+//       var circle = new google.maps.Circle({
+//         center: geolocation,
+//         radius: position.coords.accuracy
+//       });
+//       autocomplete.setBounds(circle.getBounds());
+//     });
+//   }
+// }
+
 
 // Initialize Firebase
 var config = {
@@ -12,89 +124,3 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
-
-// convert the Firebase data into an array
-function snapshotToArray(snapshot) {
-  var returnArr = [];
-  snapshot.forEach(function (childSnapshot) {
-    var item = childSnapshot.val();
-    item.key = childSnapshot.key;
-    returnArr.push(item);
-  });
-  return returnArr;
-};
-
-
-
-// geocode address data stored in Firebase
-function codeAddress(location) {
-  if (location.address) {
-    var newAddress = location.address.replace(/ /g, '+');
-    $.ajax({
-      url: `https://maps.googleapis.com/maps/api/geocode/json?address=${newAddress}&key=${API_KEY}`
-    }).done(function (response) {
-      if (response.status == 'OK') {
-        var marker = new google.maps.Marker({
-          map: map,
-          position: response.results[0].geometry.location,
-          icon: 'assets/images/colorIcon_26.png',
-        });
-      } else {
-        alert('Geocode was not successful for the following reason: ' + result.status);
-      }
-    });
-  }
-}
-
-
-
-// initialize and create map
-var map;
-function initMap() {
-
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 10,
-    center: { lat: 41.8781, lng: -87.6298 },
-    mapTypeId: 'terrain'
-  });
-
-  // call to load the geoJSON data
-  map.data.loadGeoJson('https://datacatalog.cookcountyil.gov/resource/rj5v-36tj.geojson');
-
-  // set specific map styling for geoJSON data
-  map.data.setStyle({
-    icon: 'assets/images/colorIcon_26.png',
-    clickable: true
-  })
-
-  // adds legend to the map document
-  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(document.getElementById('legend'));
-
-  // create infowindow object to use later
-  var infowindow = new google.maps.InfoWindow();
-
-  // create a listener that will wait for the user to click a facility, then display the infowindow with details about that facility
-  map.data.addListener('click', function (event) {
-    // in the geojson feature that was clicked, get the "place" and "mag" attributes
-    let companyName = event.feature.getProperty("company_name_");
-    let phoneNum = event.feature.getProperty("phone_1");
-    let address = event.feature.getProperty("address");
-    let address2 = event.feature.getProperty("municipality_") + ", " + event.feature.getProperty("state") + ", " + event.feature.getProperty("zip");
-    let html = "<p>Company: " + companyName + "</p>" + "<p>Phone: " + phoneNum + "</p>" + "<p>Address: " + address + "</p>" + "<p>" + address2 + "</p>";
-    infowindow.setContent(html); // show the html variable in the infowindow
-    infowindow.setPosition(event.feature.getGeometry().get()); // anchor the infowindow at the marker
-    infowindow.setOptions({ pixelOffset: new google.maps.Size(0, -30) }); // move the infowindow up slightly to the top of the marker icon
-    infowindow.open(map);
-  });
-
-  // on value, log the array
-  firebase.database().ref().on('value', function (snapshot) {
-    var locationArray = snapshotToArray(snapshot);
-    // console.log(locationArray);
-    for (i = 0; i < locationArray.length; i++) {
-      //console.log(locationArray[i].address);
-      codeAddress(locationArray[i]);
-    }
-  });
-
-}
